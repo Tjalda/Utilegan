@@ -1,6 +1,6 @@
 # Tjalda
 ## Checklist
 
-- [ ] User Case
-- [ ] Wireframe
+- [x] User Case
+- [x] Wireframe
 - [ ] Role Assignment

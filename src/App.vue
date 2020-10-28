@@ -1,18 +1,23 @@
 <template>
-  <button class="button is-text">Text</button>
+<div class="Map"><Map></Map></div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import Map from "./components/Map.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    //HelloWorld,
+    Map
   }
 }
 </script>
 
 <style>
-@import "~bulma/css/bulma.css";
+.map{
+  max-width: 500px;
+  max-height: 800px;
+}
 </style>

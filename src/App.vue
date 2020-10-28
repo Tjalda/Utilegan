@@ -1,23 +1,29 @@
 <template>
-<div class="Map"><Map></Map></div>
+  <div id="app">
+    <navbar/>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
-import Map from "./components/Map.vue"
+import navbar from "./components/navbar"
 
 export default {
   name: 'App',
-  components: {
-    //HelloWorld,
-    Map
-  }
+  components: { navbar }
 }
 </script>
 
 <style>
-.map{
-  max-width: 500px;
-  max-height: 800px;
-}
+  body{
+    margin: 0 auto;
+    background-color: #e6e6e6;
+  }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 </style>

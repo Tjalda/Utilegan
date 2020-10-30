@@ -3,7 +3,7 @@ const fs = require("fs");
 
 (async () => {
     try {
-        await execa("git", ["checkout", "--orphan", "gh-pages"])
+        await execa("git", ["checkout", "gh-pages"])
         console.log("Building started...")
         await execa("npm", ["run", "build"])
         const folderName = fs.existsSync("dist") ? "dist" : "build"

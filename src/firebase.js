@@ -3,7 +3,7 @@ import 'firebase/firestore'
 import 'firabase/auth'
 
 // Firebase config
-import * as firebaseConfig from 'configs/firebase.json'
+import * as firebaseConfig from '../config/firebase.json'
 
 // Initialize Firebase using config
 firebase.initializeApp(firebaseConfig)

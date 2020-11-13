@@ -1,18 +1,13 @@
 <template>
     <div class="content">
-        <h1>Skrá inn</h1>
+        <h1>{{title}}</h1>
         <hr>
-        <div class="signin">
-            <label for="uname"><b>Notendanafn</b></label>
-            <input type="text" placeholder="Sláðu inn notendanafn" name="uname" required>
-            <br><br>
-            <label for="psw"><b>Lykilorð</b></label>
-            <input type="password" placeholder="Sláðu inn lykilorð" name="psw" required>
-                
-            <button type="submit">Skrá inn</button>
 
-            <p>Nýr notandi? <a href="">Nýskráning</a></p>
+        <div class="signin">
+            <keep-alive><component v-bind:is="currentTabComponent"></component></keep-alive>
+            <p v-on:click="if(value) { value = false; changeTitle(true); } else {value=true; changeTitle(false);}">{{change}}</p>
         </div>
+
 
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt lacinia ex, et tristique arcu ultrices in. 
             Morbi sagittis velit nulla, sit amet cursus erat laoreet ut. Fusce bibendum orci eu elit viverra, non sollicitudin ipsum accumsan. 
@@ -27,9 +22,39 @@
 </template>
 
 <script>
-export default {
-    
-}
+import login from "../components/smallcomponents/login.vue"
+import createu from "../components/smallcomponents/createuser.vue"
+
+
+export default { 
+    data() {
+        return {
+            value: true,
+            change: "Nýr notandi? Nýskráning",
+            title: "Skrá inn"
+        }
+    },
+    computed: {
+        currentTabComponent() {
+            if(this.value)
+                return login;
+            else
+                return createu;
+        }
+    },
+    methods: {
+        changeTitle(diff) {
+            if(diff){
+                this.title = "Nýskránning";
+                this.change = "Ertu nú þegar notandi? Skrá inn";
+            }
+            else{
+                this.title = "Skrá inn";
+                this.change = "Nýr notandi? Nýskráning";
+            }
+        }
+    }
+  } 
 </script>
 
 <style scoped>
@@ -43,37 +68,15 @@ export default {
     h1{
         margin: 0;
     }
-    .signin p{ 
-        text-align: center;
-        padding: 0;
-    }
-    p{
-        padding-top: 1em;
-    }
     .signin{
         max-width: 30em;
         margin: 0 auto;
         padding: 3em;
     }
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
+    .signin p{
+        text-align: center;
+        padding: 0;
+        text-decoration:underline;
         cursor: pointer;
-        width: 100%;
-    }
-
-    button:hover {
-        opacity: 0.8;
     }
 </style>

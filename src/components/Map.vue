@@ -16,8 +16,8 @@ export default {
     };
   },
   mounted() {
-    this.createMap();
-    this.createPoints(this.map);
+    this.createMap();//renderar mappið eftir að map divið er búið til í vue
+    this.createPoints(this.map);// setur functionality á merkinganr og punktana á kortinu
   },
 
   methods: {
@@ -25,15 +25,15 @@ export default {
       mapboxgl.accessToken = this.accessToken;
       this.map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/smarihot/ckgi0gmza3ioq1ar1e6sl27kz",
-        zoom: 4.58,
-        center: [-17.786, 64.806],
+        style: "mapbox://styles/smarihot/ckgi0gmza3ioq1ar1e6sl27kz",// sækir útlitið á kortinu fra mapbox api
+        zoom: 4.58,//byrjunar stylling á zoominu á mappinu
+        center: [-17.786, 64.806],//byrjunar stilling á hvernig mapið er senterað
       });
     },
     createPoints(Map_) {
       Map_.on("click", function (e) {
         let features = Map_.queryRenderedFeatures(e.point, {
-          layers: ["island-points"],
+          layers: ["island-points", "ak-tjaldsvadi-1"],
           maxzoom: 16,
         }); //sækja points í layerinum fra mapbox
         if (!features.length) {
@@ -43,31 +43,35 @@ export default {
         
         let feature = features[0]; // puntkanir
         let points = feature.geometry.coordinates
-        console.log(feature.geometry.coordinates);
-        Map_.flyTo({
-          // These options control the ending camera position: centered at
-          // the target, at zoom level 9, and north up.
-          center: points,
-          zoom: 15,
-          bearing: 0,
 
-          // These options control the flight curve, making it move
-          // slowly and zoom out almost completely before starting
-          // to pan.
-          speed: 2, // make the flying slow
-          curve: 1, // change the speed at which it zooms out
+        if (feature.sourceLayer == "island_points") {//ef það er ítt á rauða hnappana þá fer þessi function i gang              
+            Map_.flyTo({
+              center: points,
+              zoom: 18,
+              bearing: 0,
+              speed: 2, // make the flying slow
+              curve: 1, // change the speed at which it zooms out
+              easing: function (t) {
+                return t;// veit ekki hvað þetta gerir 
+              },
+              essential: true,
+            });
+        }
+        if (feature.sourceLayer == "ak-points"){//þetta funcrion runnar ef það er ýtt á bláu punktana.
+          let pointname = feature.properties.Point_name;       
+          let popup = new mapboxgl.Popup({offset: [0, -15]})
+          .setLngLat(feature.geometry.coordinates)//býr til nýjan glugga frá punktinum sem var ítt á og fillir hann af html
+          .setHTML(`<button onclick='(function(){ console.log(pointname); })();'></button>`)
+          .addTo(Map_);
+        }
 
-          // This can be any easing function: it takes a number between
-          // 0 and 1 and returns another number between 0 and 1.
-          easing: function (t) {
-            return t;
-          },
 
-          // this animation is considered essential with respect to prefers-reduced-motion
-          essential: true,
-        });
       });
+   
     },
+    compairPoints(point_value){
+      console.log(point_value);
+    }
   },
 };
 </script>
@@ -81,5 +85,3 @@ export default {
 
 
 
-.flyTo({center: [-74.5 + (Math.random() - 0.5) * 10,40 + (Math.random() - 0.5) * 10],
-essential: true});

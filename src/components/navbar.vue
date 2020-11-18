@@ -5,13 +5,16 @@
         <div class="links">
             <router-link class="link" to="/"><i class="fas fa-home"></i> Forsíða</router-link> | 
             <router-link class="link" to="upplysingar"><i class="fas fa-info-circle"></i> Upplýsingar</router-link> | 
+            <!--<router-link class="link" to="skra-inn"><i class="fas fa-sign-in-alt"></i> {{signin}}</router-link>-->
             <router-link class="link" to="skra-inn"><i class="fas fa-sign-in-alt"></i> Skrá inn</router-link>
         </div>
     </div>
 </template>
 
 <script>
-    
+    /*export default{
+        props: ['signin']
+    }*/
 </script>
 
 <style scoped>

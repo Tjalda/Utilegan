@@ -4,7 +4,7 @@
         <hr>
 
         <div class="signin">
-            <keep-alive><component v-bind:is="currentTabComponent"></component></keep-alive>
+            <component v-bind:is="currentTabComponent"></component>
             <p v-on:click="if(value) { value = false; changeTitle(true); } else {value=true; changeTitle(false);}">{{change}}</p>
         </div>
 

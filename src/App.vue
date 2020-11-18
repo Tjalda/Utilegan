@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!--<navbar :signin="signedinOrNot"/>-->
     <navbar/>
     <router-view/>
     <footerNav/>
@@ -12,6 +13,9 @@ import footerNav from "./components/footerNav"
 
 export default {
   name: 'App',
+  /*data: ()=> ({
+    signedinOrNot: false
+  }),*/
   components: { navbar, footerNav }
 }
 </script>

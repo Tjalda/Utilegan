@@ -1,27 +1,26 @@
 <template>
-<p>{{ campsitename }}</p>
-<p>{{ placename }}</p>
-  <div class="panel">
-  <div class="field">
-  <div class="control">
-  <div class="select is-primary">
-  <form class="form-class" action="">
-      <select id="drop-down">
-        <option>Select dropdown</option>
-        <option>With options</option> 
-      </select>
+
+<form class="form-class" action="">
       <div class="date-wrapper"> 
       <label for="date-selctor">Frá: </label>
       <input type="date" id="date-selector" name="date-select">
       <label for="date-selector-2"> Til: </label>
       <input type="date" id="date-selector-2" name="date-select">     
       </div>
-      <input id="form-submit" type="submit" value="Panta">
+      <div class="info-wraper">
+        <p>Staður:</p> <p id="placename"></p>
+      </div>
+      <div class="info-wraper">
+        <p>Tjaldsvæði: </p><p id="campsitename"></p>
+      </div>
+      <div class="info-wraper">
+        <p>Valin punktur:</p> <p id="pointname"></p>
+      </div>
+
+      
+
 </form>
-    </div>
-  </div>
-  </div>
-  </div>
+<button @click="confirmorder">Panta</button>
 </template>
 
 <script>
@@ -35,6 +34,13 @@ export default {
   },
 
   methods: {
+    confirmorder(){
+      let placename =  document.getElementById("placename").innerText;
+      let campsitename  =  document.getElementById("campsitename").innerText;
+      let pointname =  document.getElementById("pointname").innerText;
+      console.log(placename, campsitename, pointname);
+    }
+
   }
 }
 </script>
@@ -71,6 +77,9 @@ export default {
 .date-wraper{
   display: flex;
   justify-self: flex-start;
+}
+.info-wraper{
+  display: flex;
 }
 </style>
 

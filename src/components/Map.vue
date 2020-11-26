@@ -77,7 +77,7 @@ export default {
           .setLngLat(feature.geometry.coordinates)//býr til nýjan glugga frá punktinum sem var ítt á og fillir hann af html
           .setHTML(`<button id="takki">Panta</button>`)
           .addTo(Map_);
-          document.getElementById("takki").addEventListener('click', function(){ ref.submitinfo("blabla", "blablaplace");}, false);
+          document.getElementById("takki").addEventListener('click', function(){ ref.submitinfo("Akureyri", "Hamar", pointname);}, false);
           
         }
 
@@ -95,8 +95,10 @@ export default {
 
       }
     },
-    submitinfo(bla, campsitename){
-      
+    submitinfo(placename, campsitename, pointname){
+      document.getElementById("placename").innerHTML = placename;
+      document.getElementById("campsitename").innerHTML = campsitename ;
+      document.getElementById("pointname").innerHTML = pointname ;
     }
     
 

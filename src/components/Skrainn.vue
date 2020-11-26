@@ -4,7 +4,7 @@
         <hr>
 
         <div class="signin">
-            <component v-bind:is="currentTabComponent"></component>
+            <component v-bind:is="currentTabComponent" @usersubmit="addorlogin"></component>
             <p v-on:click="if(value) { value = false; changeTitle(true); } else {value=true; changeTitle(false);}">{{change}}</p>
         </div>
 
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import login from "../components/smallcomponents/login.vue"
+import login   from "../components/smallcomponents/login.vue"
 import createu from "../components/smallcomponents/createuser.vue"
 
 
@@ -32,7 +32,8 @@ export default {
         return {
             value: true,
             change: "Nýr notandi? Nýskráning",
-            title: "Skrá inn"
+            title:  "Skrá inn",
+            userdata: []
         }
     },
     computed: {
@@ -46,13 +47,18 @@ export default {
     methods: {
         changeTitle(diff) {
             if(diff){
-                this.title = "Nýskránning";
+                this.title  = "Nýskránning";
                 this.change = "Ertu nú þegar notandi? Skrá inn";
             }
             else{
-                this.title = "Skrá inn";
+                this.title  = "Skrá inn";
                 this.change = "Nýr notandi? Nýskráning";
             }
+        },
+        addorlogin(values) {
+            this.userdata.push(values);
+            console.log(values);
+            this.$router.push('notandi');
         }
     }
   } 

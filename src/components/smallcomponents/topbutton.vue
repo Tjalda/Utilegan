@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a href="#top"><i class="far fa-arrow-alt-circle-up" style="color:white;"></i></a>
+        <a href="#top"><i class="fas fa-angle-double-up" style="color:white;"></i></a>
     </div>
 </template>
 
@@ -16,6 +16,7 @@
         line-height: 0;
         text-decoration: none;
         display: none;
+        width: 35px;
     }
 
     @media screen and (min-width: 37.5em){ div{ display: block; } }

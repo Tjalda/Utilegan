@@ -1,6 +1,7 @@
 <template>
   <div class="map">
     <div id="map"></div>
+    
   </div>
 </template>
 
@@ -8,6 +9,7 @@
 import mapboxgl from "mapbox-gl";
 
 export default {
+  props:["campsitename","placename"],
   data() {
     return {
       accessToken:
@@ -18,9 +20,13 @@ export default {
   mounted() {
     this.createMap();//renderar mappið eftir að map divið er búið til í vue
     this.createPoints(this.map);// setur functionality á merkinganr og punktana á kortinu
+    this.compairPoints(this.map);
   },
 
   methods: {
+    logger2(bla){
+      console.log("bla123123");
+    },
     createMap() {
       mapboxgl.accessToken = this.accessToken;
       this.map = new mapboxgl.Map({
@@ -31,15 +37,22 @@ export default {
       });
     },
     createPoints(Map_) {
+      let ref = this; // veit ekki hvað þessi gerir en hann lagara allt.
+      let booked = ["a1", "a2"];
+      let counter = 0;
+      
       Map_.on("click", function (e) {
         let features = Map_.queryRenderedFeatures(e.point, {
           layers: ["island-points", "ak-tjaldsvadi-1"],
           maxzoom: 16,
-        }); //sækja points í layerinum fra mapbox
+        });
+        //sækja points í layerinum fra mapbox
         if (!features.length) {
           //failsave ef það eru engir punktar
           return;
         }
+        
+        console.log(counter);
         
         let feature = features[0]; // puntkanir
         let points = feature.geometry.coordinates
@@ -57,22 +70,41 @@ export default {
               essential: true,
             });
         }
-        if (feature.sourceLayer == "ak-points"){//þetta funcrion runnar ef það er ýtt á bláu punktana.
-          let pointname = feature.properties.Point_name;       
+        if (feature.sourceLayer == "ak-points" && ref.compairPoints(feature.properties.Point_name, booked) != false){//þetta funcrion runnar ef það er ýtt á bláu punktana.
+          let pointname = feature.properties.Point_name;   
+          console.log(feature);  
           let popup = new mapboxgl.Popup({offset: [0, -15]})
           .setLngLat(feature.geometry.coordinates)//býr til nýjan glugga frá punktinum sem var ítt á og fillir hann af html
-          .setHTML(`<button onclick='(function(){ console.log(pointname); })();'></button>`)
+          .setHTML(`<button id="takki">Panta</button>`)
           .addTo(Map_);
+          document.getElementById("takki").addEventListener('click', function(){ ref.submitinfo("blabla", "blablaplace");}, false);
+          
         }
 
 
       });
    
     },
-    compairPoints(point_value){
-      console.log(point_value);
+    compairPoints(point_name, booked){//point_value, map, features){
+      for (let index = 0; index < booked.length; index++) {
+        let element = booked[index];
+        if (element == point_name) {
+          console.log("pantað")
+          return false;
+        }
+
+      }
+    },
+    submitinfo(bla, campsitename){
+      
     }
+    
+
+  
   },
+  
+  
+  
 };
 </script>
 

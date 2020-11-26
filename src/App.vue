@@ -10,7 +10,8 @@ import navbar from "./components/navbar"
 
 export default {
   name: 'App',
-  components: { navbar }
+  components: { navbar },
+
 }
 </script>
 
@@ -23,7 +24,7 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    /*text-align: center;*/ /*það þarf að centera textan annarstaðar.*/
     color: #2c3e50;
   }
 </style>

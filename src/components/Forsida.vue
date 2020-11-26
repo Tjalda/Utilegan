@@ -2,8 +2,8 @@
 <div class="forsida">
     <h1>Forsíða</h1>
     <div class="forsida-Wraper">
-        <div class="Panel"><Panel :campsitename="campsitename" :placename="placename"/></div>
-        <div class="Map"><Map :campsitname="campsitename" :placename="placename"/> </div>
+        <div class="Panel"><Panel/></div>
+        <div class="Map"><Map/> </div>
         
     </div>
 </div>
@@ -17,8 +17,6 @@ export default {
     components: { Map, Panel },
     data(){
         return{
-            campsitename:"",
-            placename:"",
         } 
     }
 }

@@ -9,7 +9,6 @@
 import mapboxgl from "mapbox-gl";
 
 export default {
-  props:["campsitename","placename"],
   data() {
     return {
       accessToken:
@@ -24,9 +23,6 @@ export default {
   },
 
   methods: {
-    logger2(bla){
-      console.log("bla123123");
-    },
     createMap() {
       mapboxgl.accessToken = this.accessToken;
       this.map = new mapboxgl.Map({
@@ -38,8 +34,6 @@ export default {
     },
     createPoints(Map_) {
       let ref = this; // veit ekki hvað þessi gerir en hann lagara allt.
-      let booked = ["a1", "a2"];
-      let counter = 0;
       
       Map_.on("click", function (e) {
         let features = Map_.queryRenderedFeatures(e.point, {
@@ -52,7 +46,6 @@ export default {
           return;
         }
         
-        console.log(counter);
         
         let feature = features[0]; // puntkanir
         let points = feature.geometry.coordinates

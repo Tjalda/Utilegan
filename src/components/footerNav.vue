@@ -9,10 +9,6 @@
     </footer>
 </template>
 
-<script>
-    
-</script>
-
 <style scoped>
     footer{
         font-weight: bold;

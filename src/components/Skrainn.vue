@@ -8,6 +8,7 @@
             <p v-on:click="if(value) { value = false; changeTitle(true); } else {value=true; changeTitle(false);}">{{change}}</p>
         </div>
 
+        <hr>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt lacinia ex, et tristique arcu ultrices in. 
             Morbi sagittis velit nulla, sit amet cursus erat laoreet ut. Fusce bibendum orci eu elit viverra, non sollicitudin ipsum accumsan. 
@@ -64,19 +65,27 @@ export default {
         background-color: white;
         text-align: left;
         padding: 3em;
+        min-height: 40em;
+        line-height: 1.5;
     }
     h1{
-        margin: 0;
+        margin-top: -10px;
     }
     .signin{
         max-width: 30em;
         margin: 0 auto;
-        padding: 3em;
+        padding: 3em 0 3em 0;
     }
     .signin p{
         text-align: center;
         padding: 0;
         text-decoration:underline;
         cursor: pointer;
+    }
+
+    @media screen and (min-width: 37.5em){
+        .signin{
+            padding: 3em;
+        }
     }
 </style>

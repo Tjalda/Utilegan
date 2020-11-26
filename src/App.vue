@@ -4,19 +4,21 @@
     <navbar/>
     <router-view/>
     <footerNav/>
+    <uparrow/>
   </div>
 </template>
 
 <script>
 import navbar from "./components/navbar"
 import footerNav from "./components/footerNav"
+import uparrow from "./components/smallcomponents/topbutton"
 
 export default {
   name: 'App',
   /*data: ()=> ({
     signedinOrNot: false
   }),*/
-  components: { navbar, footerNav }
+  components: { navbar, footerNav, uparrow }
 }
 </script>
 

@@ -3,6 +3,9 @@
         <h1>Forsíða</h1>
         <hr>
         <div class="Map"><Map/></div>
+
+        <hr>
+
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt lacinia ex, et tristique arcu ultrices in. 
             Morbi sagittis velit nulla, sit amet cursus erat laoreet ut. Fusce bibendum orci eu elit viverra, non sollicitudin ipsum accumsan. 
             Integer commodo justo eget nunc facilisis tristique. Donec cursus urna in mauris sodales, vel placerat magna eleifend.<br><br> 
@@ -30,13 +33,15 @@ export default {
         background-color: white;
         text-align: left;
         padding: 3em;
+        min-height: 40em;
+        line-height: 1.5;
     }
     .map{
         max-width: 500px;
         max-height: 800px;
     }
     h1{
-        margin: 0;
+        margin-top: -10px;
     }
     p{ padding-top: 1em; }
 </style>

@@ -90,9 +90,12 @@ export default {
         background-color: white;
         text-align: left;
         padding: 3em;
+        min-height: 40em;
+        line-height: 1.5;
+
     }
     h1{
-        margin: 0;
+        margin-top: -10px;
     }
     p{ 
         padding-top: 1em;

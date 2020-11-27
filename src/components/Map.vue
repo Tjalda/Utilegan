@@ -34,7 +34,7 @@ export default {
     },
     createPoints(Map_) {
       let ref = this; // veit ekki hvað þessi gerir en hann lagara allt.
-      
+      let booked = ["a1"];
       Map_.on("click", function (e) {
         let features = Map_.queryRenderedFeatures(e.point, {
           layers: ["island-points", "ak-tjaldsvadi-1"],

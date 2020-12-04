@@ -32,7 +32,7 @@ export default {
         margin: 0 auto;
         background-color: white;
         text-align: left;
-        padding: 3em;
+        padding: 3em 1em 1em 1em;
         min-height: 40em;
         line-height: 1.5;
     }
@@ -44,4 +44,10 @@ export default {
         margin-top: -10px;
     }
     p{ padding-top: 1em; }
+
+    @media screen and (min-width: 37.5em){ 
+        .content{
+            padding: 3em;
+        }
+    }
 </style>

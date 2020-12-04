@@ -1,8 +1,24 @@
 <template>
     <div>
-        <a href="#top"><i class="fas fa-angle-double-up" style="color:white;"></i></a>
+        <a v-on:click="up"><i class="fas fa-angle-double-up" style="color:white;"></i></a>
     </div>
 </template>
+
+<script>
+export default{
+    data() {
+        return {
+           counter: 0
+        }
+    },
+    methods: {
+        up: function (event) {
+            var rootElement = document.documentElement;
+            rootElement.scrollTo({top: 0, behavior: "smooth"});
+        }
+    }
+}
+</script>
 
 <style scoped>
     div{
@@ -17,6 +33,7 @@
         text-decoration: none;
         display: none;
         width: 35px;
+        cursor: pointer;
     }
 
     @media screen and (min-width: 37.5em){ div{ display: block; } }

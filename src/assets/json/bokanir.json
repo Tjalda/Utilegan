@@ -1,0 +1,38 @@
+[
+    {
+        "Dagsetning": "05/21/2020", 
+        "Staðsetning": "Hraunborg",
+        "Svæði": "B07",
+        "Tími": "2 dagar"
+    },
+    {
+        "Dagsetning": "12/12/2019", 
+        "Staðsetning": "Árnes",
+        "Svæði": "D15",
+        "Tími": "5 dagar"
+    },
+    {
+        "Dagsetning": "05/21/2019", 
+        "Staðsetning": "Skaftafell",
+        "Svæði": "C10",
+        "Tími": "10 dagar"
+    },
+    {
+        "Dagsetning": "06/01/2018", 
+        "Staðsetning": "Hraunborg",
+        "Svæði": "B08",
+        "Tími": "7 dagar"
+    },
+    {
+        "Dagsetning": "03/12/2018", 
+        "Staðsetning": "Laugarland",
+        "Svæði": "F02",
+        "Tími": "6 dagar"
+    },
+    {
+        "Dagsetning": "07/17/2017", 
+        "Staðsetning": "Flúðir",
+        "Svæði": "G09",
+        "Tími": "2 dagar"
+    }
+]

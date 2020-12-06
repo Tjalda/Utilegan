@@ -11,6 +11,10 @@ Notandinn á að geta skráð sig inn og séð gamlar og virkar bókanir og geta
 https://tjalda.github.io/Utilegan/  
 
 ━━  
+**Skýrsla**  
+https://github.com/Tjalda/Utilegan/wiki/Sk%C3%BDrsla
+
+━━  
 **Wiki**  
 Skýrslan og allar verkefna upplýsingarnar geta verið fundið hér  
 https://github.com/Tjalda/Utilegan/wiki

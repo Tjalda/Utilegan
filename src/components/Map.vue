@@ -19,7 +19,7 @@ export default {
   mounted() {
     this.createMap();//renderar mappið eftir að map divið er búið til í vue
     this.createPoints(this.map);// setur functionality á merkinganr og punktana á kortinu
-    this.compairPoints(this.map);
+    //this.compairPoints(this.map);
   },
 
   methods: {
@@ -103,7 +103,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #map {
   width: 100%;
   height: 50vh;

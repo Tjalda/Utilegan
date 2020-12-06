@@ -6,7 +6,7 @@
                 <h3>Username</h3>
                 <p>Email@email.com</p>
             </div>
-            <button>Skrá út</button>
+            <button onclick="location.href = '/';">Skrá út</button>
         </div>
 
         <hr>

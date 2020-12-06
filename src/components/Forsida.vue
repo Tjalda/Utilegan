@@ -2,9 +2,10 @@
     <div class="content forsida">
         <h1>Forsíða</h1>
         <hr>
+        <p>Ýttu á staðsetningu á kortinu til að velja tjaldsvæði</p>
         <div class="forsida-Wraper">
             <div class="Panel"><Panel/></div>
-            <div class="Map"><Map/> </div>
+            <div class="Map"><Map/></div>
         </div>
 
         <hr>
@@ -26,11 +27,7 @@ import Map from "../components/Map.vue"
 import Panel from "../components/OrderPanel.vue"
 
 export default {
-    components: { Map, Panel },
-    data(){
-        return{
-        } 
-    }
+    components: { Map, Panel }
 }
 
 </script>
@@ -58,7 +55,7 @@ export default {
     }
     .forsida-Wraper{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         margin: 15px;
     }
     h1{
@@ -69,6 +66,10 @@ export default {
     @media screen and (min-width: 37.5em){ 
         .content{
             padding: 3em;
+        }
+        .forsida-Wraper{
+            grid-template-columns: 1fr 1fr;
+            
         }
     }
 </style>

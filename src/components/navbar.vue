@@ -61,6 +61,7 @@
     }
     li{
         padding: 1em;
+        text-align: center;
     }
     .topmenu{
         list-style: none;

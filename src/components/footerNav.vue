@@ -19,6 +19,7 @@
         overflow: hidden;
         background-color: #212121;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+        text-align: center;
     }
     .links{
         padding: 20px;

@@ -34,6 +34,7 @@ export default{
         display: none;
         width: 35px;
         cursor: pointer;
+        text-align: center;
     }
 
     @media screen and (min-width: 37.5em){ div{ display: block; } }

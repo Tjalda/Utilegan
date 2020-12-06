@@ -1,8 +1,11 @@
 <template>
-    <div class="content">
+    <div class="content forsida">
         <h1>Forsíða</h1>
         <hr>
-        <div class="Map"><Map/></div>
+        <div class="forsida-Wraper">
+            <div class="Panel"><Panel/></div>
+            <div class="Map"><Map/> </div>
+        </div>
 
         <hr>
 
@@ -20,10 +23,16 @@
 
 <script>
 import Map from "../components/Map.vue"
+import Panel from "../components/OrderPanel.vue"
 
 export default {
-  components: { Map }
+    components: { Map, Panel },
+    data(){
+        return{
+        } 
+    }
 }
+
 </script>
 
 <style scoped>
@@ -39,6 +48,18 @@ export default {
     .map{
         max-width: 500px;
         max-height: 800px;
+        padding: 10px;
+       
+    }
+    .panel{
+        max-width: 500px;
+        max-height: 800px;
+        padding: 10px;
+    }
+    .forsida-Wraper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 15px;
     }
     h1{
         margin-top: -10px;

@@ -6,6 +6,7 @@
                 <h3>Username</h3>
                 <p>Email@email.com</p>
             </div>
+            <button>Skrá út</button>
         </div>
 
         <hr>
@@ -171,6 +172,11 @@ export default {
     .info p{
         padding: 0;
     }
+    .info button{
+        background-color: rgb(236, 67, 37);
+        height: 34px;
+        transform: translateY(0%);
+    }
     img{
         border-radius: 5em;
         width: 100px;
@@ -223,6 +229,14 @@ export default {
     @media screen and (min-width: 37.5em){  
         .content{
             padding: 3em;
+        }
+        .info{
+            grid-template-columns: auto 4fr auto;
+        }
+        .info button{
+            background-color: rgb(236, 67, 37);
+            height: 34px;
+            transform: translateY(100%);
         }
     }
     

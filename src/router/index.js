@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Forsida from '@/components/Forsida'
 import Upplysingar from '@/components/Upplysingar'
 import Skrainn from '@/components/Skrainn'
+import UserPage from '@/components/Userpage'
 import ErrorPage from '@/components/Errorpage'
 
 const routes = [
@@ -22,15 +23,24 @@ const routes = [
     component: Skrainn
   },
   {
+    path: '/notandi',
+    name: 'User',
+    component: UserPage
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'Error',
     component: ErrorPage
   },
 ];
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({behavior: "smooth"});
+}
 });
 
 export default router;

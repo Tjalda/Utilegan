@@ -15,7 +15,7 @@
     "mapbox-gl": "^1.12.0",
     "vue": "^3.0.0",
     "vue-mapbox": "^0.4.1",
-    "vue-router": "^4.0.0-rc.1"
+    "vue-router": "^4.0.0-rc.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -1,6 +1,7 @@
 <template>
   <div class="map">
     <div id="map"></div>
+    
   </div>
 </template>
 
@@ -16,8 +17,9 @@ export default {
     };
   },
   mounted() {
-    this.createMap();
-    this.createPoints(this.map);
+    this.createMap();//renderar mappið eftir að map divið er búið til í vue
+    this.createPoints(this.map);// setur functionality á merkinganr og punktana á kortinu
+    //this.compairPoints(this.map);
   },
 
   methods: {
@@ -25,54 +27,83 @@ export default {
       mapboxgl.accessToken = this.accessToken;
       this.map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/smarihot/ckgi0gmza3ioq1ar1e6sl27kz",
-        zoom: 4.58,
-        center: [-17.786, 64.806],
+        style: "mapbox://styles/smarihot/ckgi0gmza3ioq1ar1e6sl27kz",// sækir útlitið á kortinu fra mapbox api
+        zoom: 4.58,//byrjunar stylling á zoominu á mappinu
+        center: [-17.786, 64.806],//byrjunar stilling á hvernig mapið er senterað
       });
     },
     createPoints(Map_) {
+      let ref = this; // veit ekki hvað þessi gerir en hann lagara allt.
+      let booked = ["a1"];
       Map_.on("click", function (e) {
         let features = Map_.queryRenderedFeatures(e.point, {
-          layers: ["island-points"],
+          layers: ["island-points", "ak-tjaldsvadi-1"],
           maxzoom: 16,
-        }); //sækja points í layerinum fra mapbox
+        });
+        //sækja points í layerinum fra mapbox
         if (!features.length) {
           //failsave ef það eru engir punktar
           return;
         }
         
+        
         let feature = features[0]; // puntkanir
         let points = feature.geometry.coordinates
-        console.log(feature.geometry.coordinates);
-        Map_.flyTo({
-          // These options control the ending camera position: centered at
-          // the target, at zoom level 9, and north up.
-          center: points,
-          zoom: 15,
-          bearing: 0,
 
-          // These options control the flight curve, making it move
-          // slowly and zoom out almost completely before starting
-          // to pan.
-          speed: 2, // make the flying slow
-          curve: 1, // change the speed at which it zooms out
+        if (feature.sourceLayer == "island_points") {//ef það er ítt á rauða hnappana þá fer þessi function i gang              
+            Map_.flyTo({
+              center: points,
+              zoom: 18,
+              bearing: 0,
+              speed: 2, // make the flying slow
+              curve: 1, // change the speed at which it zooms out
+              easing: function (t) {
+                return t;// veit ekki hvað þetta gerir 
+              },
+              essential: true,
+            });
+        }
+        if (feature.sourceLayer == "ak-points" && ref.compairPoints(feature.properties.Point_name, booked) != false){//þetta funcrion runnar ef það er ýtt á bláu punktana.
+          let pointname = feature.properties.Point_name;   
+          console.log(feature);  
+          let popup = new mapboxgl.Popup({offset: [0, -15]})
+          .setLngLat(feature.geometry.coordinates)//býr til nýjan glugga frá punktinum sem var ítt á og fillir hann af html
+          .setHTML(`<button id="takki">Panta</button>`)
+          .addTo(Map_);
+          document.getElementById("takki").addEventListener('click', function(){ ref.submitinfo("Akureyri", "Hamar", pointname);}, false);
+          
+        }
 
-          // This can be any easing function: it takes a number between
-          // 0 and 1 and returns another number between 0 and 1.
-          easing: function (t) {
-            return t;
-          },
 
-          // this animation is considered essential with respect to prefers-reduced-motion
-          essential: true,
-        });
       });
+   
     },
+    compairPoints(point_name, booked){//point_value, map, features){
+      for (let index = 0; index < booked.length; index++) {
+        let element = booked[index];
+        if (element == point_name) {
+          console.log("pantað")
+          return false;
+        }
+
+      }
+    },
+    submitinfo(placename, campsitename, pointname){
+      document.getElementById("placename").innerHTML = placename;
+      document.getElementById("campsitename").innerHTML = campsitename ;
+      document.getElementById("pointname").innerHTML = pointname ;
+    }
+    
+
+  
   },
+  
+  
+  
 };
 </script>
 
-<style>
+<style scoped>
 #map {
   width: 100%;
   height: 50vh;
@@ -81,5 +112,3 @@ export default {
 
 
 
-.flyTo({center: [-74.5 + (Math.random() - 0.5) * 10,40 + (Math.random() - 0.5) * 10],
-essential: true});
